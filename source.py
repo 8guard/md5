@@ -1,4 +1,4 @@
-#импортируем стандартную библиотеку для работы с md5
+#импортируем стандартную библиотеку для работы с md5, tkinter (gui), pil
 import hashlib
 import time
 from tkinter import *
@@ -9,18 +9,16 @@ window = Tk()
 window.geometry("300x50")
 #визуальная составляющая (в процессе)
 #canvas = Canvas (window,width=120,heigh=120)
-#image = ImageTk.PhotoImage(Image.open("/home/blackline/Загрузки/987.png"))
+#image = ImageTk.PhotoImage(Image.open("#"))
 #canvas.create_image(-100,0,anchor=NW,image=image)
 #scanvas.pack()
 window.title("general hash md5 v.01")
-#нужно сделать логирование / убрать консольный вывод после стадии отладки
-logging= Frame(window,heigh=0, width=0)
-
+#logging= Frame(window,heigh=0, width=0)
 #ввод данные при лкм (событие)
 def handle_click(event):
     if True:
         counter = 0
-        #получаем значение введеное в tk entry
+        #получаем значение введеное в tk entry(passwin)
         letsgo = paswin.get()
         try:
 
