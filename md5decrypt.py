@@ -1,6 +1,7 @@
 #используем моудль hashlib
 import hashlib
 import json
+import time
 
 class decrypt_main:
     hash_get = "none"
@@ -19,10 +20,9 @@ class decrypt_main:
                     pswdfile = 'password.json'
                     with open(pswdfile, 'w') as pws_obj:
                         json.dump(password, pws_obj)
-                    break
-
+                        break
+            else :
+                print("не нашли пароль")
         except:
             print("\nфайл password.txt не найден\n")
             print("пожалуйста создайте файл с паролями\n")
-gen_hash = decrypt_main()
-gen_hash.check_password("21232f297a57a5a743894a0e4a801fc3")
