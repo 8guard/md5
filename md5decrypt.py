@@ -1,5 +1,6 @@
 #используем моудль hashlib
 import hashlib
+import json
 
 class decrypt_main:
     hash_get = "none"
@@ -11,12 +12,17 @@ class decrypt_main:
             #начинаем генерировать хэши из файла (построчно)
             for password in pswdfile:
                 gen_hash = hashlib.md5(password.strip().encode('utf-8')).hexdigest()
-                print(gen_hash)
+                print(password)
                 #справниваем хэши, при удачном совпадении, выводим результат
                 if hash_get == gen_hash:
                     print('пароль найден :', password)
+                    pswdfile = 'password.json'
+                    with open(pswdfile, 'w') as pws_obj:
+                        json.dump(password, pws_obj)
                     break
 
         except:
             print("\nфайл password.txt не найден\n")
             print("пожалуйста создайте файл с паролями\n")
+gen_hash = decrypt_main()
+gen_hash.check_password("21232f297a57a5a743894a0e4a801fc3")
