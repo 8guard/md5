@@ -1,5 +1,6 @@
 from md5decrypt import *
 from tkinter import *
+from tkinter import messagebox
 
 class App(Frame):
 
@@ -17,10 +18,12 @@ class App(Frame):
         self.sendhash.bind("1", self.check_md5)
 
 
+
     def check_md5 (self):
         md5 = decrypt_main()
         self.password = self.entrythingy.get()
         md5.check_password(self.password)
+        self.message = messagebox.showinfo(title="Информация",message=md5.check_password(self.password))
 
 new_app = App()
 new_app.master.title("hesh#sakura v0.1")

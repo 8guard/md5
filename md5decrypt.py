@@ -3,9 +3,8 @@ import hashlib
 import json
 
 class decrypt_main:
-    hash_get = "none"
-    #
     def check_password(self, hash_get):
+        self.hash_get = hash_get
         #пробуем прочитать файл с паролями
         try:
             pswdfile = open('hashes.txt','r')
@@ -15,15 +14,20 @@ class decrypt_main:
 
                 #справниваем хэши, при удачном совпадении, выводим результат
                 if hash_get == gen_hash:
-                    print('\nхэш подобран, его значение :', password)
+                    #print('\nхэш подобран, его значение :', password)
                     dump_jfile = 'validhash.json'
                     with open(dump_jfile, 'w') as pws_obj:
                         json.dump("hash : " + hash_get + " значение: " + password, pws_obj, ensure_ascii=False)
+                        return password
                         break
-                elif hash_get == "none":
-                    print("вы не ввели хэш")
-            else :
-                print("хэш не найден")
+                # если колличество символов равно 0, выводим значение о том что пароль не найден
+                if len(hash_get) == 0:
+                    return "Вы не задали хэш"
+            #возвращаемся при неудачном подборе хэша
+            else:
+                return "Хэш не удалось подобрать"
+            #если файл hashes.txt не найден в директории
         except:
-            print("\nфайл hashes.txt не найден\n")
-            print("пожалуйста создайте файл с хешами\n")
+            return "файл hashes.txt не найден\n"
+            #print("\nфайл hashes.txt не найден\n")
+            #print("пожалуйста создайте файл с хешами\n")
