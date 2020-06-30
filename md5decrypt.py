@@ -1,4 +1,3 @@
-#используем моудль hashlib
 import hashlib
 import json
 
