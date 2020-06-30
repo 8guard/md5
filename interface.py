@@ -1,22 +1,30 @@
 from md5decrypt import *
-from tkinter import Tk, Entry, Button
-from tkinter import messagebox
+from tkinter import *
 
-md5 = decrypt_main()
-def lhandclick(event):
-    if True:
-        md5.check_password(enter_hash.get())
-#создаем графический интерфейс используя tkinter
-mainfraim = Tk()
-#создаем окно размером 450x150
-mainfraim.resizable(width=False,height=False)
-mainfraim.geometry("321x32")
-#добавляем титул
-mainfraim.title("md5 encrypted")
-#делаем окно ввода нашего хэша
-enter_hash = Entry(mainfraim, width=20)
-input_button = Button(mainfraim, text="отправить хэш")
-enter_hash.grid(row=0,column=0,columnspan=3)
-input_button.grid(row=0, column=6,columnspan=5)
-input_button.bind("<1>", lhandclick)
-mainfraim.mainloop()
+class App(Frame):
+
+    def __init__(self, master=None):
+
+        Frame.__init__(self, master)
+        self.pack()
+
+        self.entrythingy = Entry()
+        self.entrythingy.pack()
+
+        self.sendbutton = Button(command=self.check_md5,text="Hesh out!")
+        self.sendbutton.pack()
+
+        self.sendbutton.bind("1", self.check_md5)
+
+
+    def check_md5 (self):
+        md5 = decrypt_main()
+        self.password = self.entrythingy.get()
+        md5.check_password(self.password)
+        print(md5.hash_get)
+
+new_app = App()
+new_app.master.title("md5decrypt")
+new_app.master.minsize(250, 50)
+new_app.master.resizable(width=False, height=False)
+new_app.mainloop()

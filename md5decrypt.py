@@ -1,7 +1,6 @@
 #используем моудль hashlib
 import hashlib
 import json
-import time
 
 class decrypt_main:
     hash_get = "none"
