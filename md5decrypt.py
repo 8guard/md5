@@ -16,8 +16,8 @@ class decrypt_main:
                 #справниваем хэши, при удачном совпадении, выводим результат
                 if hash_get == gen_hash:
                     print('пароль найден :', password)
-                    pswdfile = 'password.json'
-                    with open(pswdfile, 'w') as pws_obj:
+                    dump_jfile = 'password.json'
+                    with open(dump_jfile, 'w') as pws_obj:
                         json.dump(password, pws_obj)
                         break
             else :
